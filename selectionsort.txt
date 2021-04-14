@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define max INT_MAX
+
+	int array[10] = {1,33,5,22,1,99,5,22,1,2};
+
+	int length = 10;
+	int sortedArray[100];
+	int sorted_index = 0;
+	
+
+	int min_value(){
+		int min_val = max;
+		int min_val_index = 0;
+		for(int i = 0;i<length;i++){
+			if(array[i]<min_val){
+				min_val =array[i];
+				min_val_index = i;
+			}
+		}
+		array[min_val_index] = max;
+		return min_val;
+	}
+int main(){
+	
+	cout << endl << " Un sorted Array " << endl ;
+	for(int i = 0;i<length;i++){
+		cout << array[i] <<  " ";
+	}
+	
+	
+	for(int j = 0;j<length;j++){
+		sortedArray[sorted_index] = min_value();
+		sorted_index++;
+	}
+	cout << endl << "Final Output" << endl;
+	for(int i = 0;i<length;i++){
+		cout << sortedArray[i] <<"  ";
+	}
+	
+	
+	
+	
+	
+}
+
+
+// selection sort is the easiest algorithm 
+	//1 an  unsorted array will be given
+	//2 take another array which will be our sorted array  
+	// 3 select and mark the most junior data from the unsorted array and mark 
+	// it as visited and store  in the sorted array
+	// 4 continue the process untill all the  unsorted array are marked 
+	//5 end the program
