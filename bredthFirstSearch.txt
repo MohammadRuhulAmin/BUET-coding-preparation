@@ -1,0 +1,66 @@
+#include<bits/stdc++.h>
+#include<queue>
+#define max 100 
+using namespace std;
+
+int graph[max][max];
+bool visited[max];
+queue<int>q;
+void generate(int);
+void graphInput(int);
+void graphOutput(int);
+void bfs(int ,int);
+
+int main(){
+	int nodes;
+	cin >> nodes;
+	generate(nodes);
+	graphInput(nodes);
+	int src = 0;
+	bfs(src,nodes);
+		
+}	
+void bfs(int src,int nodes){
+	q.push(src);
+	visited[src] = true;
+	while(!q.empty()){
+		int temp = q.front();
+		cout << temp << " ";
+		q.pop();
+		for(int i = 0;i<nodes;i++){
+			if(graph[temp][i]>0 && !visited[i]){
+				visited[i] = true;
+				
+				q.push(i);
+			}
+		}
+	}
+	
+}
+
+
+
+
+
+void graphInput(int nodes){
+	for(int i = 0;i<nodes;i++){
+		for(int j = 0;j<nodes;j++){
+			cin >> graph[i][j];
+		}
+	}
+}
+void graphOutput(int nodes){
+	for(int i = 0;i<nodes;i++){
+		for(int j = 0;j<nodes;j++){
+			cout <<  graph[i][j] << " ";
+		}
+		cout << endl;
+	}	
+}
+
+
+void generate(int nodes){
+	for(int i = 0;i<nodes;i++){
+		visited[i] = false;
+	}
+}
