@@ -1,0 +1,60 @@
+#include<bits/stdc++.h>
+#define max 100 
+using namespace std;
+
+int graph[max][max];
+bool visited[max];
+
+void generate(int);
+void graphInput(int);
+void graphOutput(int);
+void dfs(int,int);
+void dfsTraversal(int,int);
+int main(){
+	int nodes;
+	cin >> nodes;
+	generate(nodes);
+	graphInput(nodes);
+	int src = 0;
+	dfs(src,nodes);
+	
+}	
+
+void graphInput(int nodes){
+	for(int i = 0;i<nodes;i++){
+		for(int j = 0;j<nodes;j++){
+			cin >> graph[i][j];
+		}
+	}
+}
+void graphOutput(int nodes){
+	for(int i = 0;i<nodes;i++){
+		for(int j = 0;j<nodes;j++){
+			cout <<  graph[i][j] << " ";
+		}
+		cout << endl;
+	}	
+}
+
+
+void generate(int nodes){
+	for(int i = 0;i<nodes;i++){
+		visited[i] = false;
+	}
+}
+
+void dfs(int src,int nodes){
+	if(!visited[src]){
+		visited[src] = true;
+		cout << src << " ";
+		dfsTraversal(src,nodes);
+	}
+}
+
+void dfsTraversal(int src,int nodes){
+	for(int i = 0;i<nodes;i++){
+		if(graph[src][i]>0 && !visited[i]){
+			dfs(i,nodes);
+		}
+	}
+}
